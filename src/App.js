@@ -52,9 +52,9 @@ const Profile = () => {
   let lhs = [], rhs = [];
   techs.forEach((tech, index) => {
     if (index % 2 !== 0) {
-      lhs.push(<div className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
+      lhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
     } else {
-      rhs.push(<div className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
+      rhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
     }
   })
 
