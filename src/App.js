@@ -1,14 +1,19 @@
-import React from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Divider from '@material-ui/core/Divider';
 
-import avatar from './images/avatar.jpg'
 import './App.scss';
 
-import career from './json/career.json';
+import careers from './json/career';
+import avatar from './images/avatar.jpg';
 
 function Header(props) {
   
@@ -87,37 +92,67 @@ const Profile = () => {
   );
 }
 
-const Experience = () => {
-  const careers = career.map((job, index) => {
-    const key = `c${index}`
-    const points = job.points.map((point, pindex) => {
-      const pkey = `${key}_p${pindex}`
+class Experience extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { activeIdx: 0 };
+  }
+
+  render() {
+
+    const careersElem = careers.map((job, index) => {
+      const key = `c${index}`;
+      const isActive = index === this.state.activeIdx;
+      return (
+        <React.Fragment>
+          <ListItem 
+            key={key} alignItems="flex-start" className={isActive ? 'list-item--active' : ''}>
+            <ListItemAvatar>
+              <Avatar alt={job.company} src={job.logo} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={job.company}
+              secondary={
+                <React.Fragment>
+                  <span className="block">{job.title}</span>
+                  <span>{job.time}</span>
+                </React.Fragment>
+          }
+            />
+          </ListItem>
+          {index < careers.length && 
+            <Divider variant="inset" component="li" />
+          }
+        </React.Fragment>
+      );
+    });
+  
+    const points = careers[this.state.activeIdx].points.map((point, pindex) => {
+      const pkey = `p${pindex}`
       return (<li key={pkey}><span className="fa-li"><i className="fad fa-angle-right"></i></span>{point}</li>);
     });
 
     return (
-      <div className="flex--item" key={key}>
-        <div className="">{job.company}, {job.title}</div> 
-        <ul className="fa-ul">
-          {points}
-        </ul>
+      <div id="experience" className="fullscreen section">
+        <h2>Experience</h2>
+        <p className="section-description">
+          "Adapt what is useful, reject what is useless, and add what is specifically your own."
+          <br/>- Bruce Lee
+        </p>
+        <hr/>
+        <div className="flex flex--column section-contents">
+          <div className="flex flex--row">
+            <List className="career-list flex--item">
+              {careersElem}
+            </List>
+            <ul className="fa-ul flex--item">
+              {points}
+            </ul>
+          </div>
+        </div>
       </div>
     );
-  });
-
-  return (
-    <div id="experience" className="fullscreen section">
-      <h2>Experience</h2>
-      <p className="section-description">
-        "Adapt what is useful, reject what is useless, and add what is specifically your own."
-        <br/>- Bruce Lee
-      </p>
-      <hr/>
-      <div className="flex flex--column section-contents">
-        {careers}
-      </div>
-    </div>
-    );
+  }
 }
 
 const Projects = () => {

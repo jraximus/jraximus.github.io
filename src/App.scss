@@ -1,3 +1,6 @@
+//https://material-ui.com/customization/color/#color
+
+
 /// Stroke font-character
 /// @param  {Integer} $stroke - Stroke width
 /// @param  {Color}   $color  - Stroke color
@@ -138,6 +141,23 @@ hr {
   @include stroke(2, #000);
 }
 
+.block {
+  display: block;
+}
+
+.career-list {
+  width: 100%;
+  min-width: 25ch;
+  max-width: 25ch;
+}
+
+.career-list > p {
+  color: whitesmoke;
+}
+
+.list__avatar {
+  background-color: white;
+}
 
 // maybe do something with it?
 .gadget-speak {
