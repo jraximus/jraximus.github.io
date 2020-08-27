@@ -99,14 +99,18 @@ class Experience extends Component {
   }
 
   render() {
-
     const careersElem = careers.map((job, index) => {
       const key = `c${index}`;
       const isActive = index === this.state.activeIdx;
       return (
         <React.Fragment>
           <ListItem 
-            key={key} alignItems="flex-start" className={isActive ? 'list-item--active' : ''}>
+            key={key} 
+            button
+            alignItems="flex-start" 
+            onClick={()=>this.setState({activeIdx:index})}
+            selected={isActive}
+            className="career-list__list-item ${isActive ? 'list-item--active' : ''}">
             <ListItemAvatar>
               <Avatar alt={job.company} src={job.logo} />
             </ListItemAvatar>
@@ -117,7 +121,7 @@ class Experience extends Component {
                   <span className="block">{job.title}</span>
                   <span>{job.time}</span>
                 </React.Fragment>
-          }
+              }
             />
           </ListItem>
           {index < careers.length && 
