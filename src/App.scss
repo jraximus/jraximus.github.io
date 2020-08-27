@@ -124,6 +124,13 @@ hr {
   flex-flow: column wrap;
 }
 
+.tech-type {
+  color: #00aabb;
+  cursor: help;
+  text-decoration: underline dotted;
+  font-style: italic;
+}
+
 .icon {
   line-height: inherit;
   vertical-align: middle;
@@ -141,7 +148,11 @@ hr {
   @include stroke(2, #000);
 }
 
-.block {
+.--bolded {
+  font-weight: bold;
+}
+
+.--block {
   display: block;
 }
 

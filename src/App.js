@@ -12,7 +12,8 @@ import Divider from '@material-ui/core/Divider';
 
 import './App.scss';
 
-import careers from './json/career';
+import profile from './constants/profile';
+import careers from './constants/career';
 import avatar from './images/avatar.jpg';
 
 function Header(props) {
@@ -51,45 +52,52 @@ const ContactMe = () => {
   );
 }
 
-const Profile = () => {
-
-  const techs = ['Javascript(ES6+)/Typescript', 'HTML & (S)CSS', 'React', 'Angular', 'Redux', 'Java', 'Node', 'Python', 'Azure', 'Golang']
-  let lhs = [], rhs = [];
-  techs.forEach((tech, index) => {
-    if (index % 2 !== 0) {
-      lhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
-    } else {
-      rhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i>{tech}</div>);
+class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type : ''
     }
-  })
+  }
 
-  return (
-    <div id="profile" className="fullscreen section">
-      <h2>Profile</h2>
-      <p className="section-description">I build things for the web.</p>
-      <hr/>
-      <div className="flex flex--row section-contents">
-        <div className="flex flex--item">
-          <Avatar alt="James Rac" src={avatar} className="avatar flex flex--centered"/>
-        </div>
-        
-        <div className="flex profile-text flex--item">
-          <p>Hi I'm James! Yes, those are my dogs, cute aren't they? :)</p>
-          <p>I'm a generalist webapp developer. I'm a senior programmer with skills that emphasize the front end. I love interesting problems and love even more to solve them.
-             I believe no matter the skill level, everyone should both mentor and be a mentor to keep improving their skill set.</p>
-          <p>Here are some of the technologies I'm currently working with professionally and personally:</p>
-          <div className="flex flex--row">
-            <div className="flex flex--item flex--column">
-              {lhs}
-            </div>
-            <div className="flex flex--item flex--column">
-              {rhs}
+  render() {
+    const techs = profile.techs;
+    let lhs = [], rhs = [];
+    techs.forEach((tech, index) => {
+      if (index % 2 !== 0) {
+        lhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i><span className={tech[this.state.type]? '--bolded': ''}>{tech.name}</span></div>);
+      } else {
+        rhs.push(<div key={index} className="flex flex--item"><i className="fad fa-angle-right icon"></i><span className={tech[this.state.type]? '--bolded': ''}>{tech.name}</span></div>);
+      }
+    })
+    return (
+      <div id="profile" className="fullscreen section">
+        <h2>Profile</h2>
+        <p className="section-description">I build things for the web.</p>
+        <hr/>
+        <div className="flex flex--row section-contents">
+          <div className="flex flex--item">
+            <Avatar alt="James Rac" src={avatar} className="avatar flex flex--centered"/>
+          </div>
+          
+          <div className="flex profile-text flex--item">
+            <p>Hi I'm James! Yes, those are my dogs, cute aren't they? :)</p>
+            <p>I'm a generalist webapp developer. I'm a senior programmer with skills that emphasize the front end. I love interesting problems and love even more to solve them.
+              I believe no matter the skill level, everyone should both mentor and be a mentor to keep improving their skill set.</p>
+            <p>Here are some of the technologies I'm currently working with <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'professional'})}}>professionally</span> and <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'personal'})}}>personally</span>:</p>
+            <div className="flex flex--row">
+              <div className="flex flex--item flex--column">
+                {lhs}
+              </div>
+              <div className="flex flex--item flex--column">
+                {rhs}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 class Experience extends Component {
@@ -118,7 +126,7 @@ class Experience extends Component {
               primary={job.company}
               secondary={
                 <React.Fragment>
-                  <span className="block">{job.title}</span>
+                  <span className="--block">{job.title}</span>
                   <span>{job.time}</span>
                 </React.Fragment>
               }
