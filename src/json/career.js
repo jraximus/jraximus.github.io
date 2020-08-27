@@ -1,10 +1,11 @@
-[
+const career = [
     {
         "time": "NOV 2019 - PRESENT",
         "company": "GE Aviation",
         "location": "Austin Tx",
         "title": "Staff Software Engineer",
         "summary": "",
+        "logo": require("./../images/ge_logo.png"),
         "points": [
             "Designed, architect, and updated latest UI to handle multi tenancy.",
             "Implemented a shared UI library of components for our umbrella of products using Vue/Angular. Underlying design was built on Material Design.",
@@ -20,6 +21,7 @@
         "location": "Austin Tx",
         "title": "Senior Software Engineer",
         "summary": "",
+        "logo": require("./../images/ge_logo.png"),
         "points": [
             "As Lead UI, I designed and built both an offline capable desktop app using Electron and an online offering on Predix/Cloudfoundry. Both were built in Angular. ",
             "Delivered a custom gantt-like D3 component displaying line-of-flights critically required for the first GA release.",
@@ -31,8 +33,9 @@
         "time": "DEC 2016 - MAY 2017",
         "company": "TEKsystems",
         "location": "Austin Tx",
-        "title": "(Contract to Hire) Senior UI Engineer",
+        "title": "Senior UI Engineer",
         "summary": "",
+        "logo": require("./../images/teksystems_logo.jpg"),
         "points": [
             "Brought in as an utility asset to fill the gap in UI.",
             "Working closely with another UI resource, we were able to close all the UI defects and enhancements in an aggressive timeline to bring the product to the first General Availability (GA) candidate release. ",
@@ -45,6 +48,7 @@
         "location": "Austin Tx",
         "title": "Software Engineer I/II",
         "summary": "",
+        "logo": require("./../images/brinqa_logo.png"),
         "points": [
            "Designed, owned and built questionnaire and assessment UI components. Featured multi tiered questions, dynamic dependent child questions with a focus on fluid responsive UI. Original design in jQuery, and then rewritten in AngularJS and eventually again in Angular 2.",
            "Had ownership of the middle tier and UI layer for the 4.x branch.",
@@ -57,9 +61,12 @@
         "location": "Austin Tx",
         "title": "Intern",
         "summary": "",
+        "logo": require("./../images/brinqa_logo.png"),
         "points": [
             "Mentored under the UI Lead. As my semester goal/project, I was able to contribute by helping to create end to end the User CRUD from the middle tier and UI in Grails for our next version of the platform .",
             "My first duty was to expand on the unit testing framework, and complete out test branch paths."
         ]
     }
-]
+];
+
+export default career;
