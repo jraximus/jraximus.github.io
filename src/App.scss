@@ -23,6 +23,67 @@
   text-shadow: stroke($stroke, $color);
 }
 
+// Styles that depend on resolution of media
+.section {
+  padding: 1rem 1rem 1rem;
+}
+
+.welcome-text {
+  font-size: 5rem;
+}
+
+.avatar {
+  width: 20rem !important;
+  height: 20rem !important;
+}
+
+.career-list {
+  width: 100%;
+  min-width: 355px;
+  max-width: 435px;
+}
+
+@media screen and (min-width: 500px){
+  .section {
+    padding: 1rem 3rem 1rem;
+  }
+
+  .welcome-text {
+    font-size: 6rem;
+  }
+
+  .avatar {
+    width: 25rem !important;
+    height: 25rem !important;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .section {
+    padding: 1rem 3rem 1rem;
+  }
+
+  .welcome-text {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (min-width: 751px) {
+  .profile-text {
+    padding: 0 0 1em 3em;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .section {
+    padding: 1rem 5rem 1rem;
+  }
+
+  .welcome-text {
+    font-size: 10rem;
+  }
+}
+
 h2 {
   font-size: 4rem;
   font-weight: 200;
@@ -58,7 +119,7 @@ hr {
   background-color: antiquewhite;
 }
 
-#experience, #contact {
+#experience {
   background-color: whitesmoke;
 }
 
@@ -79,19 +140,26 @@ hr {
 }
 
 .avatar {
-  width: 25rem !important;
-  height: 25rem !important;
-
   margin: auto auto;
 }
 
 .section {
-  padding: 1rem 10rem 1rem;
   flex-flow: column wrap;
 }
 
 .section-contents {
-  margin-top: 3rem;
+  margin: 3em 1em 0 1em;
+}
+
+.footer {
+  background-color: #171717;
+  color: whitesmoke;
+  // min-height: 50vh;
+  padding-bottom: 10rem;
+
+  hr {
+    border-color: #424242;
+  }
 }
 
 .flex {
@@ -120,7 +188,6 @@ hr {
 }
 
 .profile-text {
-  padding: 1rem 3rem 1rem;
   flex-flow: column wrap;
 }
 
@@ -141,7 +208,6 @@ hr {
   position: absolute;
   bottom: 0;
   right: 0;
-  font-size: 10rem;
   font-weight: bolder;
   color: whitesmoke;
 
@@ -156,12 +222,6 @@ hr {
   display: block;
 }
 
-.career-list {
-  width: 100%;
-  min-width: 25ch;
-  max-width: 25ch;
-}
-
 .career-list > p {
   color: whitesmoke;
 }
@@ -170,12 +230,33 @@ hr {
   cursor: pointer;
 }
 
+.career-points-list {
+  min-width: 200px;
+}
+
 .career-points-list__point {
   margin-bottom: .5em;
 }
 
 .list__avatar {
   background-color: white;
+}
+
+.contact-link {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.contact-link > a {
+  text-align: start;
+  color: inherit;
+  font-size: 1.5em;
+  min-width: 310px;
+  display: inline-block;
+}
+
+.contact-link > a > i {
+  font-size: 1.5em;
 }
 
 // maybe do something with it?

@@ -9,16 +9,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 
 import './App.scss';
 
 import profile from './constants/profile';
 import careers from './constants/career';
+import contacts from './constants/contact';
 import avatar from './images/avatar.jpg';
+import under_construction from './images/under_construction.gif';
 
-function Header(props) {
-  
-
+const Header = (props) => {
   const links = props.links.map((val) => {
     return (<div key={val} className="link" onClick={() => goToSection(val)}>{val}</div>);
   })
@@ -45,9 +46,24 @@ function Header(props) {
 }
 
 const ContactMe = () => {
+  const links = contacts.map((contact, index) => {
+    return (
+      <Grid className="contact-link" item xs={12} sm={6} key={index}>
+        <a component="a" href={contact.link}>
+          <i className={contact.logo + " icon"}></i><span>{contact.text}</span>
+        </a>
+      </Grid>
+    );
+  });
   return (
-    <div id="contact">
-      This is where you contact me!
+    <div id="contact" className="section section footer">
+      <h2>Contact</h2>
+      <p className="section-description"></p>
+      <hr/>
+    
+      <Grid container className="section-contents">
+        {links}
+      </Grid>
     </div>
   );
 }
@@ -82,7 +98,7 @@ class Profile extends Component {
           
           <div className="flex profile-text flex--item">
             <p>Hi I'm James! Yes, those are my dogs, cute aren't they? :)</p>
-            <p>I'm a generalist webapp developer with experience in the backend/frontend/devops and customer facing. However, my passion and skills emphasize with the front end. I love interesting problems and love even more to solve them.
+            <p>I'm a generalist webapp developer with experience in the backend/frontend/devops and customer facing. However, my passion and skills align primarily with the front end. I love interesting problems and love even more to solve them.
               I believe no matter the skill level, everyone should both mentor and be a mentor to keep improving their skill set.</p>
             <p>Here are some of the technologies I'm currently working with <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'professional'})}}>professionally</span> and <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'personal'})}}>personally</span>:</p>
             <div className="flex flex--row">
@@ -118,7 +134,7 @@ class Experience extends Component {
             alignItems="flex-start" 
             onClick={()=>this.setState({activeIdx:index})}
             selected={isActive}
-            className="career-list__list-item ${isActive ? 'list-item--active' : ''}">
+            className={"career-list__list-item" + (isActive ? 'list-item--active' : '')}>
             <ListItemAvatar>
               <Avatar alt={job.company} src={job.logo} />
             </ListItemAvatar>
@@ -172,9 +188,17 @@ const Projects = () => {
     <div id="projects" className="fullscreen section">
       <h2>Projects</h2>
       <p className="section-description">
-        Here's a subdescription
+        UNDER CONSTRUCTION!!!!!!!!
       </p>
       <hr/>
+      <div className="flex flex--column section-contents">
+        <div className="flex--item" style={{margin:"auto"}}>
+          <img src={under_construction}></img>
+        </div>
+        <div className="flex--item" style={{"font-size":"2.5em", "margin-top":"2em"}}>
+          <marquee behavior="scroll" direction="left">Under Construction....</marquee>
+        </div>
+      </div>
     </div>
   )
 }
