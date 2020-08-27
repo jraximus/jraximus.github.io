@@ -133,7 +133,7 @@ class Experience extends Component {
   
     const points = careers[this.state.activeIdx].points.map((point, pindex) => {
       const pkey = `p${pindex}`
-      return (<li key={pkey}><span className="fa-li"><i className="fad fa-angle-right"></i></span>{point}</li>);
+      return (<li key={pkey} className="career-points-list__point"><span className="fa-li"><i className="fad fa-angle-right"></i></span>{point}</li>);
     });
 
     return (
@@ -149,7 +149,7 @@ class Experience extends Component {
             <List className="career-list flex--item">
               {careersElem}
             </List>
-            <ul className="fa-ul flex--item">
+            <ul className="fa-ul flex--item career-points-list">
               {points}
             </ul>
           </div>
