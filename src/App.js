@@ -82,7 +82,7 @@ class Profile extends Component {
           
           <div className="flex profile-text flex--item">
             <p>Hi I'm James! Yes, those are my dogs, cute aren't they? :)</p>
-            <p>I'm a generalist webapp developer. I'm a senior programmer with skills that emphasize the front end. I love interesting problems and love even more to solve them.
+            <p>I'm a generalist webapp developer with experience in the backend/frontend/devops and customer facing. However, my passion and skills emphasize with the front end. I love interesting problems and love even more to solve them.
               I believe no matter the skill level, everyone should both mentor and be a mentor to keep improving their skill set.</p>
             <p>Here are some of the technologies I'm currently working with <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'professional'})}}>professionally</span> and <span className="tech-type" onMouseLeave={() => {this.setState({type:''})}} onMouseEnter={() => {this.setState({type:'personal'})}}>personally</span>:</p>
             <div className="flex flex--row">
